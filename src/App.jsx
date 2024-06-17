@@ -1,51 +1,31 @@
-import { useEffect, useState } from "react";
-import ContactList from "./components/ContactList/ContactList";
-import SearchBox from "./components/SearchBox/SearchBox";
-import initialContacts from "./components/сontacts.json";
-import ContactForm from "./components/ContactForm/ContactForm";
+import { useEffect, useState } from "react"
+import getArticlesApi from "./api/articless-api"
+import ImageGallery from "./components/ImageGallery/ImageGallery"
+
+
+
 
 
 function App() {
-const [contacts, setContacts]= useState(() => {
-  const savedContacts = window.localStorage.getItem('saved-contacts');
-  if (savedContacts !== null) {
-    return JSON.parse(savedContacts);
-  }
-  return initialContacts;
-});
 
-const [filter, setFilter] = useState("") 
+  const [images, setImages] = useState([])
 
-// добавляем контакты в локалСтор с Use
-useEffect(() => {
-  window.localStorage.setItem('saved-contacts', JSON.stringify(contacts));
-}, [contacts]);
+  useEffect(() => {
+    const getImages = async () => {
+      const data = await getArticlesApi()
+      console.log('data :>> ', data);
+      setImages(data)
+    }
+    getImages()
+  },[])
 
-
-  const filterContact = contacts.filter((contact)=>contact.name.toLowerCase().includes(filter.toLowerCase()) )
  
-  const addContact = newContact => {
-    setContacts(prevContacts => {
-      return [...prevContacts, newContact];
-    });
-  };
-
-  const deleteContact = (contactId)=>{
-    setContacts(prevContacts => {
-      return prevContacts.filter((contact)=> contact.id !== contactId )
-    })
-  }
-
-return (
-<div>
-<h1>Phonebook</h1>
-  <ContactForm onAdd={addContact} />
-  <SearchBox value={filter} onFilter={setFilter} />
-  <ContactList contacts={filterContact} onDelete={deleteContact} />
-   
-</div>
-
+return <>{images.length > 0&& (
+<ImageGallery images={images} />
 )
+}
+</>
+
 
 }
 
