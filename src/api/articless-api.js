@@ -1,6 +1,21 @@
 import axios from "axios"
-const getArticlesApi = async () => { 
-    const {data} = await axios.get("https://api.unsplash.com/photos/?client_id=dcI-k11rZgt38IFWDOqbLJwLkmaCnuFfeGPG7GxFxSY")
+
+const API_KEY = "dcI-k11rZgt38IFWDOqbLJwLkmaCnuFfeGPG7GxFxSY"
+
+axios.defaults.baseURL = "https://api.unsplash.com/";
+axios.defaults.headers.common["Authorization"] = `Client-ID ${API_KEY}`;
+axios.defaults.params = {
+    per_page: 10,
+  };
+
+
+const getArticlesApi = async (query, page) => { 
+    const {data} = await axios.get(`search/photos`, {
+        params: {
+            query: query,
+        page: page,
+        }
+    })
 return data
  }
 export default getArticlesApi

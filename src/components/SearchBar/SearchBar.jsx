@@ -1,30 +1,25 @@
-import { useState } from "react";
-import toast from "react-hot-toast";
+import { useState } from 'react';
+import toast from 'react-hot-toast';
 
+const SearchBar = ({ onSubmit }) => {
+  const [query, setQuery] = useState('');
 
-
-
-const SearchBar = ({onSubmit}) => {
-
-    const [query, setQuery] = useState("");
-
-    function handleSubmitInput(e) {
-        setQuery(e.target.value)
-    }
-    function handleSubmit (e){
-        e.preventDefault()
-        if (!query.trim()) {
-            toast.error("Please enter a search query");
-            return;
+  function handleSubmitInput(e) {
+    setQuery(e.target.value);
+  }
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (!query.trim()) {
+      toast.error('Please enter a search query');
+      return;
     }
     onSubmit(query);
-    setQuery("");
+    setQuery('');
   }
-
 
   return (
     <header>
-      <form onSubmit={handleSubmit} >
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
           autocomplete="off"
