@@ -16,6 +16,6 @@ const getArticlesApi = async (query, page) => {
         page: page,
         }
     })
-return data
+return data.results
  }
 export default getArticlesApi
