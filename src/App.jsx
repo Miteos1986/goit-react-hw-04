@@ -5,6 +5,7 @@ import Loader from './components/Loader/Loader';
 import SearchBar from './components/SearchBar/SearchBar';
 import { ErrorMessage } from 'formik';
 import LoadMoreBtn from './components/LoadMoreBtn/LoadMoreBtn';
+import ReactModal from 'react-modal';
 
 function App() {
   const [images, setImages] = useState([]);
@@ -13,6 +14,8 @@ function App() {
   const [page, setPage] = useState(1)
 const [query, setQuery] = useState("")
 const [showBtn, setShowBtn] = useState(false)
+const [modalIsOpen, setIsOpen] = useState(false);
+let subtitle;
 
 
   useEffect(() => {
@@ -51,6 +54,20 @@ const [showBtn, setShowBtn] = useState(false)
 const handleLoadMore = async () => { 
   setPage(page + 1)
  }
+
+ function openModal() {
+  
+  setIsOpen(true);
+}
+
+function afterOpenModal() {
+  
+  subtitle.style.color = '#f00';
+}
+
+function closeModal() {
+  setIsOpen(false);
+}
   
   return (
     <>
