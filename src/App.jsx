@@ -38,7 +38,7 @@ function App() {
         setIsLoading(false);
       }
     };
-    query && getImages();
+    getImages();
   }, [query, page]);
 
   const handleSubmit = async searchQuery => {
@@ -77,6 +77,7 @@ function App() {
           isOpen={modalIsOpen}
           onRequestClose={closeModal}
           imageUrl={selectImage.urls.regular}
+          alt_description={selectImage.alt_description}
           description={selectImage.description}
           likes={selectImage.likes}
         />

@@ -29,7 +29,7 @@ const ImageModal = ({isOpen, closeModal, imageUrl, alt_description,description,l
       >
       <div>
         <img src={imageUrl} alt={alt_description} 
-        style={{ width: "800", height: "600" }}
+       
         />
         
     </div>
