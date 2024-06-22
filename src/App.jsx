@@ -15,7 +15,7 @@ function App() {
   const [page, setPage] = useState(1)
 const [query, setQuery] = useState("")
 const [showBtn, setShowBtn] = useState(false)
-const [modalIsOpen, setIsOpen] = useState(false);
+const [modalIsOpen, setModalIsOpen] = useState(false);
 const [selectImage, setSelectImage] = useState("")
 let subtitle;
 
@@ -77,11 +77,11 @@ function closeModal() {
       {images.length > 0 && <ImageGallery images={images} openModal={openModal} />}
       {isLoading && <Loader />}
       {showBtn && <LoadMoreBtn onClick={handleLoadMore} />}
-      {selectImage && (ImageModal
+      {selectImage && (<ImageModal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         imageUrl={selectImage.results.urls.regular}
-      ) }
+      />)}
     </>
   );
 }

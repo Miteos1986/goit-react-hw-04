@@ -14,11 +14,10 @@ const customStyles = {
     },
   };
 
-const ImageModal = ({isOpen, afterOpenModal, closeModal, imageUrl, alt_description }) => {
+const ImageModal = ({isOpen, closeModal, imageUrl, alt_description }) => {
   return (
       <Modal
       isOpen={isOpen}
-      onAfterOpen={afterOpenModal}
       onRequestClose={closeModal}
       style={customStyles}
       contentLabel="Example Modal"
