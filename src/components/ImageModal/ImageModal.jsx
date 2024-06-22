@@ -14,10 +14,10 @@ const customStyles = {
     },
   };
 
-const ImageModal = ({isOpen, onAfterOpen, onRequestClose, imageUrl, alt_description }) => {
+const ImageModal = ({isOpen, afterOpenModal, closeModal, imageUrl, alt_description }) => {
   return (
       <Modal
-      isOpen={modalIsOpen}
+      isOpen={isOpen}
       onAfterOpen={afterOpenModal}
       onRequestClose={closeModal}
       style={customStyles}

@@ -6,6 +6,7 @@ import SearchBar from './components/SearchBar/SearchBar';
 import { ErrorMessage } from 'formik';
 import LoadMoreBtn from './components/LoadMoreBtn/LoadMoreBtn';
 import ReactModal from 'react-modal';
+import ImageModal from './components/ImageModal/ImageModal';
 
 function App() {
   const [images, setImages] = useState([]);
@@ -15,6 +16,7 @@ function App() {
 const [query, setQuery] = useState("")
 const [showBtn, setShowBtn] = useState(false)
 const [modalIsOpen, setIsOpen] = useState(false);
+const [selectImage, setSelectImage] = useState("")
 let subtitle;
 
 
@@ -55,18 +57,16 @@ const handleLoadMore = async () => {
   setPage(page + 1)
  }
 
- function openModal() {
-  
+ function openModal(image) {
+  selectImage(image)
   setIsOpen(true);
 }
 
-function afterOpenModal() {
-  
-  subtitle.style.color = '#f00';
-}
+
 
 function closeModal() {
   setIsOpen(false);
+  selectImage("")
 }
   
   return (
@@ -74,9 +74,14 @@ function closeModal() {
       <SearchBar onSubmit={handleSubmit} />
       {error && <ErrorMessage/>}
 
-      {images.length > 0 && <ImageGallery images={images} />}
+      {images.length > 0 && <ImageGallery images={images} openModal={openModal} />}
       {isLoading && <Loader />}
       {showBtn && <LoadMoreBtn onClick={handleLoadMore} />}
+      {selectImage && (ImageModal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        imageUrl={selectImage.results.urls.regular}
+      ) }
     </>
   );
 }
