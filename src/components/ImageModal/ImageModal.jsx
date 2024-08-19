@@ -1,4 +1,5 @@
 import Modal from "react-modal";
+import css from "./ImageModal.module.css"
 
 
 Modal.setAppElement("#root");
@@ -29,16 +30,16 @@ const ImageModal = ({isOpen, closeModal, imageUrl, alt_description,description,l
       shouldCloseOnOverlayClick={true} // Close on click outside
       shouldCloseOnEsc={true} // Close on ESC key press
       >
-     <div>
+     <div className={css.modalContent}>
      <div>
         <button onClick={() => closeModal()}>Close button</button>
-        <img src={imageUrl} alt={alt_description} 
+        <img className={css.modalImage} src={imageUrl} alt={alt_description} 
        
         />
         
     </div>
-    <p> description:{description}</p>
-    <p>Likes: {likes}</p>
+    <p className={css.modalDescription}> description:{description}</p>
+    <p className={css.modalLikes}>Likes: {likes}</p>
      </div>
 
     </Modal>
