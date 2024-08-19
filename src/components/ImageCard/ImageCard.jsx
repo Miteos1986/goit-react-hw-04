@@ -1,9 +1,9 @@
-
+import css from "./ImageCard.module.css"
 
 const ImageCard = ({src, alt, onClick}) => {
   return (
    
-  <img src={src} alt={alt} onClick={onClick}/>
+  <img className={css.galleryImage} src={src} alt={alt} onClick={onClick}/>
 
   )
 }

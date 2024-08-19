@@ -32,14 +32,14 @@ const ImageModal = ({isOpen, closeModal, imageUrl, alt_description,description,l
       >
      <div className={css.modalContent}>
      <div>
-        <button onClick={() => closeModal()}>Close button</button>
+        <button className={css.modalBtn} onClick={() => closeModal()}>❌</button>
         <img className={css.modalImage} src={imageUrl} alt={alt_description} 
        
         />
         
     </div>
-    <p className={css.modalDescription}> description:{description}</p>
-    <p className={css.modalLikes}>Likes: {likes}</p>
+    <p className={css.modalDescription}> description: {description}</p>
+    <p className={css.modalLikes}>❤️: {likes}</p>
      </div>
 
     </Modal>
