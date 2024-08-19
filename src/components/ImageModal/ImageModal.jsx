@@ -22,12 +22,16 @@ const ImageModal = ({isOpen, closeModal, imageUrl, alt_description,description,l
       <Modal
       isOpen={isOpen}
       onRequestClose={closeModal}
+
+      closeModal={closeModal}
       style={customStyles}
       contentLabel="Example Modal"
       shouldCloseOnOverlayClick={true} // Close on click outside
       shouldCloseOnEsc={true} // Close on ESC key press
       >
-      <div>
+     <div>
+     <div>
+        <button onClick={() => closeModal()}>Close button</button>
         <img src={imageUrl} alt={alt_description} 
        
         />
@@ -35,6 +39,7 @@ const ImageModal = ({isOpen, closeModal, imageUrl, alt_description,description,l
     </div>
     <p> description:{description}</p>
     <p>Likes: {likes}</p>
+     </div>
 
     </Modal>
   )

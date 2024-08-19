@@ -76,6 +76,7 @@ function App() {
         <ImageModal
           isOpen={modalIsOpen}
           onRequestClose={closeModal}
+          closeModal={closeModal}
           imageUrl={selectImage.urls.regular}
           alt_description={selectImage.alt_description}
           description={selectImage.description}
