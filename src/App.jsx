@@ -3,9 +3,10 @@ import getArticlesApi from './api/articless-api';
 import ImageGallery from './components/ImageGallery/ImageGallery';
 import Loader from './components/Loader/Loader';
 import SearchBar from './components/SearchBar/SearchBar';
-import { ErrorMessage } from 'formik';
+// import { ErrorMessage } from 'formik';
 import LoadMoreBtn from './components/LoadMoreBtn/LoadMoreBtn';
 import ImageModal from './components/ImageModal/ImageModal';
+import { ErrorMessage } from 'formik';
 
 function App() {
   const [images, setImages] = useState([]);
@@ -31,9 +32,10 @@ function App() {
         const data = await getArticlesApi(query, page);
         // console.log('data :>> ', data);
         setImages(prevImages => [...prevImages, ...data]);
-        setShowBtn(data.total_pages && data.total_pages !== page);
+        // console.log('data.total_pages:', data.total_pages, 'page:', page);
+        setShowBtn( page > 0) ;
       } catch (error) {
-        setError(true);
+        setError(error);
       } finally {
         setIsLoading(false);
       }
