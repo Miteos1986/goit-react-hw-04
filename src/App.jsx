@@ -3,10 +3,11 @@ import getArticlesApi from './api/articless-api';
 import ImageGallery from './components/ImageGallery/ImageGallery';
 import Loader from './components/Loader/Loader';
 import SearchBar from './components/SearchBar/SearchBar';
-// import { ErrorMessage } from 'formik';
 import LoadMoreBtn from './components/LoadMoreBtn/LoadMoreBtn';
 import ImageModal from './components/ImageModal/ImageModal';
-import { ErrorMessage } from 'formik';
+import ErrorMessage  from './components/ErrorMessage/ErrorMessage';
+import { Toaster } from 'react-hot-toast';
+
 
 function App() {
   const [images, setImages] = useState([]);
@@ -85,6 +86,9 @@ function App() {
           likes={selectImage.likes}
         />
       )}
+      <div>
+        <Toaster />
+      </div>
     </>
   );
 }

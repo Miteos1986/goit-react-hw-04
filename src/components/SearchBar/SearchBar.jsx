@@ -10,7 +10,7 @@ const SearchBar = ({ onSubmit }) => {
   function handleSubmit(e) {
     e.preventDefault();
     if (!query.trim()) {
-      toast.error('Please enter a search query');
+      toast.error('Please enter a text on English');
       return;
     }
     onSubmit(query);
@@ -30,6 +30,7 @@ const SearchBar = ({ onSubmit }) => {
         />
         <button type="submit">Search</button>
       </form>
+      
     </header>
   );
 };
